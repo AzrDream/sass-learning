@@ -1,0 +1,19 @@
+/*
+@mixin animate($args...){
+  transform: $args;
+}
+ */
+@mixin animate($name, $time, $args...){
+  transform: $name, $time, $args;
+}
+div{
+  width: 200px;
+  height: 200px;
+  background: red;
+  @include animate(all, 4s, linear, 0s)
+}
+div:hover{
+  width: 400px;
+  height: 400px;
+  background: blue;
+}
