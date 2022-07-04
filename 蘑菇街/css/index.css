@@ -25,3 +25,48 @@
   /*兼容IE6*/
   *zoom: 1;
 }
+
+/*全局配置*/
+body {
+  font: 12px/1.6 tahoma,arial,sans-serif;
+  color: #333;
+  background: #f7f7f7;
+}
+
+.nav .nav-in {
+  width: 1690px;
+  height: 100%;
+  margin: 0 auto;
+  background: skyblue;
+}
+.nav .nav-top {
+  width: 100%;
+  height: 33px;
+  border-bottom: 1px solid #ccc;
+  background: red;
+}
+.nav .nav-top ul {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  height: 100%;
+}
+.nav .nav-top ul li {
+  margin: 0 10px;
+}
+.nav .nav-top ul li a {
+  color: #ccc;
+}
+.nav .nav-top ul li a i {
+  color: pink;
+  font-size: 10px;
+  margin-right: 5px;
+}
+.nav .nav-top ul li:last-child a i {
+  color: #ccc;
+}
+.nav .nav-bottom {
+  width: 100%;
+  height: 100px;
+  background: blue;
+}
