@@ -1,13 +1,16 @@
 window.onload = function () {
     // 1.初始化顶部的导航
     initNav();
-    // 2.初始化控制文字行数的代码
-    // initTextRow();
-    // 3.初始化首页的数据
+    // 2.初始化首页的数据
     let obj = initJsonData();
+    // 3.根据数据创建内容
     let oMainin = document.querySelector(".main-in");
     let html = template('test', obj);
     oMainin.innerHTML = html;
+    // 4.初始化控制文字行数的代码
+    initTextRow();
+    // 5.进行瀑布流布局
+    waterfall();
 };
 function initTextRow() {
     /*
@@ -458,4 +461,44 @@ function initJsonData() {
   ]
 }`;
     return JSON.parse(str);
+}
+function waterfall() {
+    let oItems = document.querySelectorAll(".item");
+    let oMainIn = document.querySelector(".main-in");
+    let mainInWidth = oMainIn.offsetWidth;
+    let itemWidth = oItems[0].offsetWidth;
+    let cols = Math.floor(mainInWidth / itemWidth);
+    // console.log(cols);
+
+    // 1.定义数组保存第一行所有元素的高度
+    let rowHeight = [];
+    // 2.遍历取出所有的图片
+    for(let i = 0; i < oItems.length; i++){
+        let item = oItems[i];
+        if(i < cols){
+            // 3.判断是否是第一行
+            item.style.position  = "";
+            rowHeight.push(item.offsetHeight);
+        }else{
+            // 4.如果不是第一行, 就按照指定规则来排版
+            // 4.1找到第一行中最矮的那个元素
+            let minHeight = Math.min.apply(this, rowHeight);
+            // 4.2找到第一行中最矮那个元素的索引
+            let minIndex = rowHeight.findIndex(function (value) {
+                return value === minHeight;
+            });
+            // 4.3根据索引取出最矮的那个元素
+            let minItem = oItems[minIndex];
+            // 4.4获取到最矮那个元素的offsetLeft
+            let minLeft = minItem.offsetLeft;
+            // 4.5设置当前图片的位置
+            item.style.position = "absolute";
+            item.style.left = minLeft + "px";
+            item.style.top = minHeight + 20 + "px";
+            // 4.6修改当前列对应的高度
+            rowHeight[minIndex] += item.offsetHeight + 20;
+        }
+    }
+    oMainIn.style.height = Math.max.apply(this, rowHeight) + "px";
+    // console.log(rowHeight);
 }

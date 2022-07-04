@@ -147,6 +147,7 @@ body{
   position: fixed;
   left: 0;
   top: -100px;
+  z-index: 999;
   transition: all 1s linear 0s;
   background: #fff;
   .nav-bottom{
@@ -161,13 +162,15 @@ body{
   .main-in{
     width: 1690px;
     margin: 0 auto;
+    position: relative;
     .item{
-      width: 220px;
-      background: #fff;
-      border-radius: 15px;
-      overflow: hidden;
+      float: left;
+      padding: 0 10px;
       .item-box{
-        width: 100%;
+        width: 220px;
+        background: #fff;
+        border-radius: 15px;
+        overflow: hidden;
         position: relative;
         left: 0;
         top: 0;

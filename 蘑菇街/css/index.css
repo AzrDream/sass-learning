@@ -143,6 +143,7 @@ body {
   position: fixed;
   left: 0;
   top: -100px;
+  z-index: 999;
   transition: all 1s linear 0s;
   background: #fff;
 }
@@ -156,15 +157,17 @@ body {
 .main .main-in {
   width: 1690px;
   margin: 0 auto;
+  position: relative;
 }
 .main .main-in .item {
+  float: left;
+  padding: 0 10px;
+}
+.main .main-in .item .item-box {
   width: 220px;
   background: #fff;
   border-radius: 15px;
   overflow: hidden;
-}
-.main .main-in .item .item-box {
-  width: 100%;
   position: relative;
   left: 0;
   top: 0;

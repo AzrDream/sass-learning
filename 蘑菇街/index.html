@@ -147,7 +147,9 @@
     <div class="item">
         <div class="item-box">
             <div class="item-top">
-                <img src="<%=list[i].cover%>" alt="">
+                <% let scale = list[i].originW / list[i].originH %>
+                <% let imgHeight = 220 / scale%>
+                <img src="<%=list[i].cover %>" style="width: 220px; height: <%=imgHeight%>px">
                 <div class="play"><img src="images/play.png" alt=""></div>
                 <div class="title"><img src="images/sold.png" alt=""><%=list[i].itemNumbers%>件商品</div>
                 <div class="mask">
