@@ -282,3 +282,14 @@ body {
 .main .main-in .item:hover .item-box .item-bottom a {
   background: #fff;
 }
+.main .main-in .banner {
+  width: 700px;
+  position: absolute;
+  top: 0;
+  left: 490px;
+  border-radius: 15px;
+  overflow: hidden;
+}
+.main .main-in .banner img {
+  width: 100%;
+}

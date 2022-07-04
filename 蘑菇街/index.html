@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>蘑菇街-时尚目的地</title>
-    <link rel="shortcut icon" href="favicon.ico"  type="image/x-icon"/>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="fonts/iconfont.css">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/index.css">
@@ -140,10 +140,16 @@
             </div>
         </div>
         -->
+        <div class="banner">
+            <img src="images/banner.jpg" alt="">
+        </div>
     </div>
 </div>
 <script id="test" type="text/html">
     <% for(let i = 0; i < list.length; i++) { %>
+    <% if(i === 2 || i === 3 || i === 4) {%>
+    <div class="item" style="width: 220px; height: 1160px"></div>
+    <%}else{%>
     <div class="item">
         <div class="item-box">
             <div class="item-top">
@@ -184,6 +190,7 @@
             <%}%>
         </div>
     </div>
+    <% } %>
     <% } %>
 </script>
 <script src="js/index.js"></script>

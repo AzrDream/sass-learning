@@ -297,5 +297,16 @@ body{
         }
       }
     }
+    .banner{
+      width: 700px;
+      position: absolute;
+      top: 0;
+      left: 490px;
+      border-radius: 15px;
+      overflow: hidden;
+      img{
+        width: 100%;
+      }
+    }
   }
 }

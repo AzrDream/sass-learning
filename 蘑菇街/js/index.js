@@ -6,7 +6,7 @@ window.onload = function () {
     // 3.根据数据创建内容
     let oMainin = document.querySelector(".main-in");
     let html = template('test', obj);
-    oMainin.innerHTML = html;
+    oMainin.innerHTML += html;
     // 4.初始化控制文字行数的代码
     initTextRow();
     // 5.进行瀑布流布局
