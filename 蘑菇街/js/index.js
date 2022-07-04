@@ -26,8 +26,10 @@ function initTextRow() {
         oDes.style.overflow = "hidden";
     }
      */
-    let oDes = document.querySelector(".mask-des");
-    $clamp(oDes,{clamp: 2});
+    let oDes = document.querySelectorAll(".mask-des");
+    for(let i = 0; i < oDes.length; i++) {
+        $clamp(oDes[i],{clamp: 3});
+    }
 }
 function initNav() {
     // 1.拿到原有的顶部的导航

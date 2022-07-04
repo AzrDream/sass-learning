@@ -150,7 +150,9 @@
                 <% let scale = list[i].originW / list[i].originH %>
                 <% let imgHeight = 220 / scale%>
                 <img src="<%=list[i].cover %>" style="width: 220px; height: <%=imgHeight%>px">
+                <% if(list[i].isVideo) {%>
                 <div class="play"><img src="images/play.png" alt=""></div>
+                <%}%>
                 <div class="title"><img src="images/sold.png" alt=""><%=list[i].itemNumbers%>件商品</div>
                 <div class="mask">
                     <ul>
@@ -170,14 +172,16 @@
                     </div>
                 </div>
             </div>
-            <div class="item-bottom">
-                <% for(let j = 0; j < list[i].brandInfo.length; j++) { %>
+            <% if(list[i].brandInfo.length !== 0) {%>
+            <div class="item-bottom clearfix">
+                <% for(let j = 0; j < list[i].brandInfo.length; j++) {%>
                 <a href="#">
-                    <img src="<%=list[i].brandInfo[j].brandLogo%>" alt="">
-                    <%=list[i].brandInfo[j].brandName%>
+                    <img src="<%=list[i].brandInfo[j].brandLogo %>" alt="">
+                    <%=list[i].brandInfo[j].brandName %>
                 </a>
                 <% } %>
             </div>
+            <%}%>
         </div>
     </div>
     <% } %>
