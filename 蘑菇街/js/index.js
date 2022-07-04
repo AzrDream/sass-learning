@@ -11,6 +11,11 @@ window.onload = function () {
     initTextRow();
     // 5.进行瀑布流布局
     waterfall();
+    // 6.初始化首页分类的数据
+    let obj2 = initCategoryJsonData();
+    // 7.根据数据创建内容
+    let html2 = template('demo', obj2);
+    oMainin.innerHTML += html2;
 };
 function initTextRow() {
     /*
@@ -50,6 +55,46 @@ function initNav() {
             oNav2.style.top = "-100px";
         }
     }
+}
+function waterfall() {
+    let oItems = document.querySelectorAll(".item");
+    let oMainIn = document.querySelector(".main-in");
+    let mainInWidth = oMainIn.offsetWidth;
+    let itemWidth = oItems[0].offsetWidth;
+    let cols = Math.floor(mainInWidth / itemWidth);
+    // console.log(cols);
+
+    // 1.定义数组保存第一行所有元素的高度
+    let rowHeight = [];
+    // 2.遍历取出所有的图片
+    for(let i = 0; i < oItems.length; i++){
+        let item = oItems[i];
+        if(i < cols){
+            // 3.判断是否是第一行
+            item.style.position  = "";
+            rowHeight.push(item.offsetHeight);
+        }else{
+            // 4.如果不是第一行, 就按照指定规则来排版
+            // 4.1找到第一行中最矮的那个元素
+            let minHeight = Math.min.apply(this, rowHeight);
+            // 4.2找到第一行中最矮那个元素的索引
+            let minIndex = rowHeight.findIndex(function (value) {
+                return value === minHeight;
+            });
+            // 4.3根据索引取出最矮的那个元素
+            let minItem = oItems[minIndex];
+            // 4.4获取到最矮那个元素的offsetLeft
+            let minLeft = minItem.offsetLeft;
+            // 4.5设置当前图片的位置
+            item.style.position = "absolute";
+            item.style.left = minLeft + "px";
+            item.style.top = minHeight + 20 + "px";
+            // 4.6修改当前列对应的高度
+            rowHeight[minIndex] += item.offsetHeight + 20;
+        }
+    }
+    oMainIn.style.height = Math.max.apply(this, rowHeight) + "px";
+    // console.log(rowHeight);
 }
 function initJsonData() {
     let str = `{
@@ -464,43 +509,112 @@ function initJsonData() {
 }`;
     return JSON.parse(str);
 }
-function waterfall() {
-    let oItems = document.querySelectorAll(".item");
-    let oMainIn = document.querySelector(".main-in");
-    let mainInWidth = oMainIn.offsetWidth;
-    let itemWidth = oItems[0].offsetWidth;
-    let cols = Math.floor(mainInWidth / itemWidth);
-    // console.log(cols);
-
-    // 1.定义数组保存第一行所有元素的高度
-    let rowHeight = [];
-    // 2.遍历取出所有的图片
-    for(let i = 0; i < oItems.length; i++){
-        let item = oItems[i];
-        if(i < cols){
-            // 3.判断是否是第一行
-            item.style.position  = "";
-            rowHeight.push(item.offsetHeight);
-        }else{
-            // 4.如果不是第一行, 就按照指定规则来排版
-            // 4.1找到第一行中最矮的那个元素
-            let minHeight = Math.min.apply(this, rowHeight);
-            // 4.2找到第一行中最矮那个元素的索引
-            let minIndex = rowHeight.findIndex(function (value) {
-                return value === minHeight;
-            });
-            // 4.3根据索引取出最矮的那个元素
-            let minItem = oItems[minIndex];
-            // 4.4获取到最矮那个元素的offsetLeft
-            let minLeft = minItem.offsetLeft;
-            // 4.5设置当前图片的位置
-            item.style.position = "absolute";
-            item.style.left = minLeft + "px";
-            item.style.top = minHeight + 20 + "px";
-            // 4.6修改当前列对应的高度
-            rowHeight[minIndex] += item.offsetHeight + 20;
-        }
+function initCategoryJsonData() {
+    let str = `{
+  "cateList": [
+    {
+      "link": "https://list.mogu.com/book/clothing/50240?acm=3.mce.1_10_1llmw.128038.0.5Qe7Xrqx6dc8l.pos_0-m_503880-sd_119",
+      "cateIcon": "https://s10.mogucdn.com/mlcdn/c45406/190509_1gbe37kgc9f21h53c5e4aed8905e1_224x224.png",
+      "cateName": "上衣"
+    },
+    {
+      "link": "https://list.mogu.com/book/skirt/50004?acm=3.mce.1_10_1llmy.128038.0.5Qe7Xrqx6dc8m.pos_1-m_503881-sd_119",
+      "cateIcon": "https://s10.mogucdn.com/mlcdn/c45406/190509_330e6di9i5j0ljc5dcbk4b50ld14b_224x224.png",
+      "cateName": "裙装"
+    },
+    {
+      "link": "https://list.mogu.com/book/trousers/50020?acm=3.mce.1_10_1lln0.128038.0.5Qe7Xrqx6dc8n.pos_2-m_503882-sd_119",
+      "cateIcon": "https://s10.mogucdn.com/mlcdn/c45406/190509_722gj5bfh264i38bgja715b239hfa_224x224.png",
+      "cateName": "裤子"
+    },
+    {
+      "link": "https://list.mogu.com/book/neiyi/50025?acm=3.mce.1_10_1lln2.128038.0.5Qe7Xrqx6dc8o.pos_3-m_503883-sd_119",
+      "cateIcon": "https://s10.mogucdn.com/mlcdn/c45406/190509_5622i7e9k68l361128j5iba049j53_224x224.png",
+      "cateName": "内衣"
+    },
+    {
+      "link": "https://list.mogu.com/book/shoes/50330?acm=3.mce.1_10_1lln4.128038.0.5Qe7Xrqx6dc8p.pos_4-m_503884-sd_119",
+      "cateIcon": "https://s10.mogucdn.com/mlcdn/c45406/190509_6l3eg395ig7f347b2c41jdidha119_224x224.png",
+      "cateName": "女鞋"
+    },
+    {
+      "link": "https://list.mogu.com/book/bags/50675?acm=3.mce.1_10_1lln6.128038.0.5Qe7Xrqx6dc8q.pos_5-m_503885-sd_119",
+      "cateIcon": "https://s10.mogucdn.com/mlcdn/c45406/190509_7j1f72bifcl41b9ad7b3f8c8be1a7_224x224.png",
+      "cateName": "包包"
+    },
+    {
+      "link": "https://list.mogu.com/book/accessories/50797?acm=3.mce.1_10_1lln8.128038.0.5Qe7Xrqx6dc8r.pos_6-m_503886-sd_119",
+      "cateIcon": "https://s10.mogucdn.com/mlcdn/c45406/190509_108463afa721cei1dgjdd57eleahb_224x224.png",
+      "cateName": "配饰"
+    },
+    {
+      "link": "https://list.mogu.com/book/boyfriend/51716?acm=3.mce.1_10_1llna.128038.0.5Qe7Xrqx6dc8s.pos_7-m_503887-sd_119",
+      "cateIcon": "https://s10.mogucdn.com/mlcdn/c45406/190509_524f84905d4c13i4g331ca5hbde70_224x224.png",
+      "cateName": "男友"
+    },
+    {
+      "link": "https://list.mogu.com/book/magic/51894?acm=3.mce.1_10_1llnc.128038.0.5Qe7Xrqx6dc8t.pos_8-m_503888-sd_119",
+      "cateIcon": "https://s10.mogucdn.com/mlcdn/c45406/190509_4eb2af5ge01g7bfe18ha7a0e7hk0k_224x224.png",
+      "cateName": "美妆"
+    },
+    {
+      "link": "https://list.mogu.com/book/baby/20000602?acm=3.mce.1_10_1llne.128038.0.5Qe7Xrqx6dc8u.pos_9-m_503889-sd_119",
+      "cateIcon": "https://s10.mogucdn.com/mlcdn/c45406/190509_6648igef9ac7gekeaj2afjbbij8k0_224x224.png",
+      "cateName": "母婴"
+    },
+    {
+      "link": "https://list.mogu.com/book/home/51642?acm=3.mce.1_10_1llng.128038.0.5Qe7Xrqx6dc8v.pos_10-m_503890-sd_119",
+      "cateIcon": "https://s10.mogucdn.com/mlcdn/c45406/190509_39g6c9e2a3ecceadab7l3i3b4efa2_224x224.png",
+      "cateName": "家居"
+    },
+    {
+      "link": "https://list.mogu.com/book/food/52014?acm=3.mce.1_10_1llni.128038.0.5Qe7Xrqx6dc8w.pos_11-m_503891-sd_119",
+      "cateIcon": "https://s10.mogucdn.com/mlcdn/c45406/190509_08je0kcg12b46c2f46ahl9h79c713_224x224.png",
+      "cateName": "食品"
     }
-    oMainIn.style.height = Math.max.apply(this, rowHeight) + "px";
-    // console.log(rowHeight);
+  ],
+  "wordList": [
+    {
+      "link": "https://list.mogu.com/book/clothing/50243?acm=3.mce.1_10_1llkc.132494.0.5Qe7Xrqx6dc7b.pos_0-m_503834-sd_119",
+      "word": "时尚套装"
+    },
+    {
+      "link": "https://list.mogu.com/book/skirt/50045?acm=3.mce.1_10_1llke.132494.0.5Qe7Xrqx6dc7c.pos_1-m_503835-sd_119",
+      "word": "连衣裙"
+    },
+    {
+      "link": "https://list.mogu.com/book/clothing/10055729?acm=3.mce.1_10_1llkg.132494.0.5Qe7Xrqx6dc7d.pos_2-m_503836-sd_119",
+      "word": "荷叶边雪纺衫"
+    },
+    {
+      "link": "https://list.mogu.com/book/skirt/52140?acm=3.mce.1_10_1llki.132494.0.5Qe7Xrqx6dc7e.pos_3-m_503837-sd_119",
+      "word": "波点裙装"
+    },
+    {
+      "link": "https://list.mogu.com/book/skirt/50047?acm=3.mce.1_10_1llkk.132494.0.5Qe7Xrqx6dc7f.pos_4-m_503838-sd_119",
+      "word": "半身裙"
+    },
+    {
+      "link": "https://list.mogu.com/book/trousers/50206?acm=3.mce.1_10_1llkm.132494.0.5Qe7Xrqx6dc7g.pos_5-m_503839-sd_119",
+      "word": "牛仔裤"
+    },
+    {
+      "link": "https://list.mogu.com/book/shoes/51268?acm=3.mce.1_10_1llko.132494.0.5Qe7Xrqx6dc7h.pos_6-m_503840-sd_119",
+      "word": "运动鞋"
+    },
+    {
+      "link": "https://list.mogu.com/book/clothing/50244?acm=3.mce.1_10_1llkq.132494.0.5Qe7Xrqx6dc7i.pos_7-m_503841-sd_119",
+      "word": "百搭T恤"
+    },
+    {
+      "link": "https://list.mogu.com/book/clothing/20004110?acm=3.mce.1_10_1llks.132494.0.5Qe7Xrqx6dc7j.pos_8-m_503842-sd_119",
+      "word": "小个子搭配"
+    },
+    {
+      "link": "https://list.mogu.com/book/clothing/20004137?acm=3.mce.1_10_1llku.132494.0.5Qe7Xrqx6dc7k.pos_9-m_503843-sd_119",
+      "word": "轻薄外套"
+    }
+  ]
+}`;
+    return JSON.parse(str);
 }

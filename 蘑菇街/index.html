@@ -140,6 +140,7 @@
             </div>
         </div>
         -->
+        <!--
         <div class="banner">
             <img src="images/banner.jpg" alt="">
         </div>
@@ -171,8 +172,26 @@
                 <li><a href="#">时尚套装</a></li>
             </ul>
         </div>
+        -->
     </div>
 </div>
+<script id="demo" type="text/html">
+    <div class="banner">
+        <img src="images/banner.jpg" alt="">
+    </div>
+    <div class="category">
+        <ul class="category-top">
+            <% for(let i = 0; i < cateList.length; i++) {%>
+            <li style="background: url('<%=cateList[i].cateIcon%>'); background-size: 112px 112px;"><a href="#"><%=cateList[i].cateName%></a></li>
+            <% } %>
+        </ul>
+        <ul class="category-bottom">
+            <% for(let i = 0; i < wordList.length; i++) {%>
+            <li><a href="#"><%=wordList[i].word%></a></li>
+            <% } %>
+        </ul>
+    </div>
+</script>
 <script id="test" type="text/html">
     <% for(let i = 0; i < list.length; i++) { %>
     <% if(i === 2 || i === 3 || i === 4) {%>
