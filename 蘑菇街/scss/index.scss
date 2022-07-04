@@ -32,8 +32,10 @@ body{
   color: #333;
   background: #f7f7f7;
 }
-
+/*顶部导航*/
 .nav{
+  margin-bottom: 30px;
+  background: #fff;
   .nav-in{
     width: 1690px;
     height: 100%;
@@ -150,6 +152,58 @@ body{
   .nav-bottom{
     .menu{
       visibility: hidden;
+    }
+  }
+}
+
+.main{
+  width: 100%;
+  .main-in{
+    width: 1690px;
+    margin: 0 auto;
+    .item{
+      width: 220px;
+      background: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      .item-top{
+        position: relative;
+        &>img{
+          width: 100%;
+        }
+        .play{
+          position: absolute;
+          left: 10px;
+          top: 10px;
+        }
+        .title{
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          padding: 0 10px;
+          box-sizing: border-box;
+          height: 40px;
+          line-height: 40px;
+          color: #fff;
+          img{
+            margin-right: 5px;
+            vertical-align: text-bottom;
+          }
+        }
+      }
+      .item-bottom{
+        padding: 10px;
+        a{
+          color: #333;
+          background: #ccc;
+          padding: 2px;
+          border-radius: 3px;
+          img{
+            width: 14px;
+            vertical-align: text-bottom;
+          }
+        }
+      }
     }
   }
 }
