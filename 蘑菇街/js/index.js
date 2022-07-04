@@ -1,56 +1,18 @@
 window.onload = function () {
     // 1.初始化顶部的导航
     initNav();
-    // 2.初始化首页的数据
-    let obj = initJsonData();
-    // 3.根据数据创建内容
-    let oMainin = document.querySelector(".main-in");
-    let html = template('test', obj);
-    oMainin.innerHTML += html;
-    // 4.初始化控制文字行数的代码
-    initTextRow();
-    // 5.进行瀑布流布局
-    waterfall();
-    // 6.初始化首页分类的数据
-    let obj2 = initCategoryJsonData();
-    // 7.根据数据创建内容
-    let html2 = template('demo', obj2);
-    oMainin.innerHTML += html2;
 
-    // 8.初始化首页底部的数据
-    let obj3 = initFooterJsonData();
-    // 9.根据数据创建内容
-    let oFooterIn = document.querySelector(".footer-in");
-    let html3 = template('exmp', obj3);
-    oFooterIn.innerHTML = html3;
+    // 2.初始化首页的商品
+    initGoods();
 
-    // 10控制返回顶部
-    let oBackBtn = document.querySelector(".back");
-    window.onscroll = throttle(function () {
-        let offsetY = getPageScroll().y;
-        if(offsetY >= 500) {
-            oBackBtn.style.display = "block";
-        }else{
-            oBackBtn.style.display = "none";
-        }
-    },500);
+    // 3.初始化首页的分类
+    initCategory();
 
-    let timerId = null;
-    oBackBtn.onclick = function () {
-        clearInterval(timerId);
-        timerId = setInterval(function () {
-            let begin = getPageScroll().y;
-            let target = 0;
-            let step = (target - begin) * 0.3;
-            begin += step;
-            if(Math.abs(Math.floor(step)) <= 1){
-                clearInterval(timerId);
-                window.scrollTo(0, 0);
-                return;
-            }
-            window.scrollTo(0, begin);
-        }, 50);
-    }
+    // 4.初识话首页的底部
+    initFooter();
+
+    // 5.初始化首页返回按钮
+    initBackBtn();
 };
 function initTextRow() {
     /*
@@ -58,37 +20,18 @@ function initTextRow() {
     let oDes = document.querySelector(".mask-des");
     // 2.拿到行高
     let lineHeight = parseFloat(getComputedStyle(oDes).lineHeight);
-    // 3.拿到元素的行高
+    // 3.拿到元素的高度
     let height = parseFloat(getComputedStyle(oDes).height);
+    // console.log(lineHeight, height);
     // 4.判断元素的高度是否超出了3倍的行高
-    if(height > (3 * lineHeight)) {
+    if(height > (3 * lineHeight)){
         oDes.style.height = (3 * lineHeight) + "px";
         oDes.style.overflow = "hidden";
     }
      */
     let oDes = document.querySelectorAll(".mask-des");
-    for(let i = 0; i < oDes.length; i++) {
-        $clamp(oDes[i],{clamp: 3});
-    }
-}
-function initNav() {
-    // 1.拿到原有的顶部的导航
-    let oNav = document.querySelector(".nav");
-    let oNav2 = document.querySelector(".nav2");
-    // 2.拿到原有的顶部导航的高度
-    let navHeight = oNav.offsetHeight;
-    // 3.监听网页的滚动事件
-    window.onscroll = function () {
-        // 4.获取到滚动出去的范围
-        let offsetY = getPageScroll().y;
-        // 5.判断滚动出去的高度是否已经超过了原有顶部导航的高度
-        if(offsetY >= navHeight) {
-            // 显示吸顶的导航
-            oNav2.style.top = "0px";
-        }else{
-            // 隐藏吸顶的导航
-            oNav2.style.top = "-100px";
-        }
+    for(let i = 0; i < oDes.length; i++){
+        $clamp(oDes[i], {clamp: 3});
     }
 }
 function waterfall() {
@@ -130,6 +73,107 @@ function waterfall() {
     }
     oMainIn.style.height = Math.max.apply(this, rowHeight) + "px";
     // console.log(rowHeight);
+}
+function initNav() {
+    // 1.拿到原有的顶部的导航
+    let oNav = document.querySelector(".nav");
+    let oNav2 = document.querySelector(".nav2");
+    // 2.拿到原有的顶部导航的高度
+    let navHeight = oNav.offsetHeight;
+    // 3.监听网页的滚动事件
+    window.addEventListener("scroll", function () {
+        // 4.获取到滚动出去的范围
+        let offsetY = getPageScroll().y;
+        // 5.判断滚动出去的高度是否已经超出了原有顶部导航的高度
+        if(offsetY >= navHeight){
+            // 显示吸顶的导航
+            oNav2.style.top = "0px";
+        }else{
+            // 隐藏吸顶的导航
+            oNav2.style.top = "-100px";
+        }
+    });
+    /*
+    window.onscroll = function () {
+        // 4.获取到滚动出去的范围
+        let offsetY = getPageScroll().y;
+        // 5.判断滚动出去的高度是否已经超出了原有顶部导航的高度
+        if(offsetY >= navHeight){
+            // 显示吸顶的导航
+            oNav2.style.top = "0px";
+        }else{
+            // 隐藏吸顶的导航
+            oNav2.style.top = "-100px";
+        }
+    }
+     */
+}
+function initGoods() {
+    // 2.初始化首页的数据
+    let obj = initJsonData();
+    // 3.根据数据创建内容
+    let oMainIn = document.querySelector(".main-in");
+    let html = template('test', obj);
+    oMainIn.innerHTML = oMainIn.innerHTML + html;
+    // 4.初始化控制文字行数的代码
+    initTextRow();
+    // 5.进行瀑布流布局
+    waterfall();
+}
+function initCategory() {
+    // 6.初始化首页分类的数据
+    let obj = initCategoryJsonData();
+    // 7.根据数据创建内容
+    let oMainIn = document.querySelector(".main-in");
+    let html = template('demo', obj);
+    oMainIn.innerHTML = oMainIn.innerHTML + html;
+}
+function initFooter() {
+    // 8.初始化首页底部的数据
+    let obj = initFooterJsonData();
+    // 9.根据数据创建内容
+    let oFooterIn = document.querySelector(".footer-in");
+    let html = template('exmp', obj);
+    oFooterIn.innerHTML = html;
+}
+function initBackBtn() {
+    // 10.控制返回顶部
+    let oBackBtn = document.querySelector(".back");
+    window.addEventListener("scroll", function () {
+        let offsetY = getPageScroll().y;
+        if(offsetY >= 500){
+            oBackBtn.style.display = "block";
+        }else{
+            oBackBtn.style.display = "none";
+        }
+    });
+    /*
+    window.onscroll = throttle(function () {
+        let offsetY = getPageScroll().y;
+        if(offsetY >= 500){
+            oBackBtn.style.display = "block";
+        }else{
+            oBackBtn.style.display = "none";
+        }
+    }, 500);
+     */
+
+    let timerId = null;
+    oBackBtn.onclick = function () {
+        clearInterval(timerId);
+        timerId = setInterval(function () {
+            let begin = getPageScroll().y;
+            let target = 0;
+            let step = (target - begin) * 0.3;
+            begin += step;
+            if(Math.abs(Math.floor(step)) <= 1){
+                clearInterval(timerId);
+                window.scrollTo(0, 0);
+                return;
+            }
+            window.scrollTo(0, begin);
+        }, 50);
+    }
 }
 
 function initJsonData() {
