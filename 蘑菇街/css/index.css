@@ -151,6 +151,7 @@ body {
   visibility: hidden;
 }
 
+/*主体内容*/
 .main {
   width: 100%;
 }
@@ -340,4 +341,91 @@ body {
 }
 .main .main-in .category .category-bottom li a {
   color: #333;
+}
+
+/*底部*/
+.footer {
+  width: 100%;
+  height: 415px;
+  background: url("./../images/footer-bg.jpg") no-repeat;
+  background-size: cover;
+  margin-top: 50px;
+  padding-top: 50px;
+  padding-bottom: 25px;
+}
+.footer .footer-in {
+  width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+  color: #fff;
+}
+.footer .footer-in a {
+  color: #fff;
+}
+.footer .footer-in a:hover {
+  color: orange;
+}
+.footer .footer-in .footer-logo {
+  text-align: center;
+}
+.footer .footer-in .footer-helper {
+  overflow: hidden;
+  margin-top: 50px;
+}
+.footer .footer-in .footer-helper dl {
+  float: left;
+  width: 300px;
+}
+.footer .footer-in .footer-helper dl dt {
+  font-size: 14px;
+}
+.footer .footer-in .footer-helper dl dt::after {
+  content: '';
+  display: block;
+  width: 30px;
+  height: 1px;
+  background: #fff;
+  margin-bottom: 30px;
+}
+.footer .footer-in .footer-helper dl dd {
+  line-height: 30px;
+}
+.footer .footer-in .footer-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+.footer .footer-in .footer-list li {
+  margin: 0 15px;
+}
+.footer .footer-in .footer-line {
+  text-align: center;
+  padding: 20px 0;
+  position: relative;
+}
+.footer .footer-in .footer-line::before {
+  content: "";
+  display: inline-block;
+  width: 450px;
+  height: 1px;
+  background: #fff;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.footer .footer-in .footer-line::after {
+  content: "";
+  display: inline-block;
+  width: 450px;
+  height: 1px;
+  background: #fff;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.footer .footer-in .footer-copyright {
+  text-align: center;
 }
