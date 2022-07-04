@@ -23,6 +23,34 @@ window.onload = function () {
     let oFooterIn = document.querySelector(".footer-in");
     let html3 = template('exmp', obj3);
     oFooterIn.innerHTML = html3;
+
+    // 10控制返回顶部
+    let oBackBtn = document.querySelector(".back");
+    window.onscroll = throttle(function () {
+        let offsetY = getPageScroll().y;
+        if(offsetY >= 500) {
+            oBackBtn.style.display = "block";
+        }else{
+            oBackBtn.style.display = "none";
+        }
+    },500);
+
+    let timerId = null;
+    oBackBtn.onclick = function () {
+        clearInterval(timerId);
+        timerId = setInterval(function () {
+            let begin = getPageScroll().y;
+            let target = 0;
+            let step = (target - begin) * 0.3;
+            begin += step;
+            if(Math.abs(Math.floor(step)) <= 1){
+                clearInterval(timerId);
+                window.scrollTo(0, 0);
+                return;
+            }
+            window.scrollTo(0, begin);
+        }, 50);
+    }
 };
 function initTextRow() {
     /*

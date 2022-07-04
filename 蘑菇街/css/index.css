@@ -429,3 +429,17 @@ body {
 .footer .footer-in .footer-copyright {
   text-align: center;
 }
+
+/*返回顶部*/
+.back {
+  width: 72px;
+  text-align: center;
+  border-radius: 6px;
+  background: #f1f1f1;
+  padding: 10px;
+  box-sizing: border-box;
+  position: fixed;
+  right: 20px;
+  bottom: 50px;
+  display: none;
+}
