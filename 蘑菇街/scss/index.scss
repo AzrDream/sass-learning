@@ -308,5 +308,53 @@ body{
         width: 100%;
       }
     }
+    .category{
+      width: 700px;
+      height: 400px;
+      background: url("./../images/bg.gif") no-repeat;
+      background-size: cover;
+      position: absolute;
+      top: 760px;
+      left: 490px;
+      .category-top{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 55px 10px 0;
+        box-sizing: border-box;
+        li{
+          width: 112px;
+          height: 112px;
+          background: url("./../images/category.png") no-repeat;
+          background-size: cover;
+          text-align: center;
+          line-height: 170px;
+          a{
+            color: #333;
+          }
+        }
+      }
+      .category-bottom{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 10px;
+        box-sizing: border-box;
+        li{
+          width: 120px;
+          height: 30px;
+          line-height: 30px;
+          text-align: center;
+          background: #f1f1f1;
+          margin-bottom: 10px;
+          border-radius: 15px;
+          a{
+            color: #333;
+          }
+        }
+      }
+    }
   }
 }
