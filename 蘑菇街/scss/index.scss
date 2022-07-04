@@ -260,10 +260,13 @@ body{
         .item-bottom{
           padding: 10px;
           a{
+            float: left;
             color: #333;
             background: #ccc;
             padding: 2px;
             border-radius: 3px;
+            margin-right: 10px;
+            margin-bottom: 10px;
             img{
               width: 14px;
               vertical-align: text-bottom;

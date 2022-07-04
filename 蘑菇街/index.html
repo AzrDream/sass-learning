@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/index.css">
     <script src="js/tools.js"></script>
     <script src="js/clamp.js"></script>
-    <script src="js/index.js"></script>
+    <script src="js/template-web.js"></script>
 </head>
 <body>
 <div class="nav">
@@ -102,6 +102,7 @@
 </div>
 <div class="main">
     <div class="main-in">
+        <!--
         <div class="item">
             <div class="item-box">
                 <div class="item-top">
@@ -138,7 +139,47 @@
                 </div>
             </div>
         </div>
+        -->
     </div>
 </div>
+<script id="test" type="text/html">
+    <% for(let i = 0; i < list.length; i++) { %>
+    <div class="item">
+        <div class="item-box">
+            <div class="item-top">
+                <img src="<%=list[i].cover%>" alt="">
+                <div class="play"><img src="images/play.png" alt=""></div>
+                <div class="title"><img src="images/sold.png" alt=""><%=list[i].itemNumbers%>件商品</div>
+                <div class="mask">
+                    <ul>
+                        <li>
+                            <span><%=list[i].cFav%></span>
+                        </li>
+                        <li></li>
+                    </ul>
+                    <div class="mask-info">
+                        <div class="mask-title">
+                            <img src="images/sold.png" alt="">
+                            <%=list[i].itemNumbers%>件商品
+                        </div>
+                        <div class="mask-des">
+                            <%=list[i].content%>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item-bottom">
+                <% for(let j = 0; j < list[i].brandInfo.length; j++) { %>
+                <a href="#">
+                    <img src="<%=list[i].brandInfo[j].brandLogo%>" alt="">
+                    <%=list[i].brandInfo[j].brandName%>
+                </a>
+                <% } %>
+            </div>
+        </div>
+    </div>
+    <% } %>
+</script>
+<script src="js/index.js"></script>
 </body>
 </html>
