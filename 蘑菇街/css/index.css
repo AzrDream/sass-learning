@@ -37,13 +37,11 @@ body {
   width: 1690px;
   height: 100%;
   margin: 0 auto;
-  background: skyblue;
 }
 .nav .nav-top {
   width: 100%;
   height: 33px;
   border-bottom: 1px solid #ccc;
-  background: red;
 }
 .nav .nav-top ul {
   display: flex;
@@ -53,6 +51,7 @@ body {
 }
 .nav .nav-top ul li {
   margin: 0 10px;
+  color: #ccc;
 }
 .nav .nav-top ul li a {
   color: #ccc;
@@ -68,5 +67,68 @@ body {
 .nav .nav-bottom {
   width: 100%;
   height: 100px;
-  background: blue;
+}
+.nav .nav-bottom .nav-in {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+.nav .nav-bottom .nav-in .logo img {
+  vertical-align: bottom;
+}
+.nav .nav-bottom .nav-in .menu {
+  font-size: 15px;
+  margin-left: 30px;
+}
+.nav .nav-bottom .nav-in .menu i {
+  font-size: 20px;
+}
+.nav .nav-bottom .nav-in .search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin-left: 283px;
+}
+.nav .nav-bottom .nav-in .search input {
+  border: none;
+  outline: none;
+}
+.nav .nav-bottom .nav-in .search input[type=text] {
+  width: 650px;
+  height: 48px;
+  line-height: 48px;
+  background: #f7f7f7;
+  padding-left: 10px;
+  box-sizing: border-box;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.nav .nav-bottom .nav-in .search input[type=submit] {
+  width: 58px;
+  height: 48px;
+  background: url("./../images/search-btn.png") no-repeat;
+}
+.nav .nav-bottom .nav-in .list {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  height: 100%;
+  margin-left: 30px;
+}
+.nav .nav-bottom .nav-in .list li {
+  margin-left: 30px;
+  text-align: center;
+}
+.nav .nav-bottom .nav-in .list li i {
+  font-size: 30px;
+}
+.nav .nav-bottom .nav-in .login {
+  margin-left: 100px;
+}
+.nav .nav-bottom .nav-in .login a {
+  color: #333;
+}
+.nav .nav-bottom .nav-in .login a img {
+  vertical-align: middle;
 }
