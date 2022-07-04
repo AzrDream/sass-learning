@@ -177,6 +177,7 @@
 </div>
 <div class="footer">
     <div class="footer-in">
+        <!--
         <div class="footer-logo">
             <img src="images/footer-logo.png" alt="">
         </div>
@@ -258,8 +259,48 @@
                 <span>|</span>
             </p>
         </div>
+        -->
     </div>
 </div>
+<script id="exmp" type="text/html">
+    <div class="footer-logo">
+        <img src="images/footer-logo.png" alt="">
+    </div>
+    <div class="footer-helper">
+        <% for(let i = 0; i < clos.length; i++){%>
+        <dl>
+            <% for(let j = 0; j < clos[i].length; j++){%>
+            <% if(clos[i][j].isHeader) {%>
+            <dt><%=clos[i][j].title%></dt>
+            <%}else{%>
+            <dd><a href="#"><%=clos[i][j].title%></a></dd>
+            <%}%>
+            <% } %>
+        </dl>
+        <% } %>
+    </div>
+    <ul class="footer-list">
+        <% for(let i = 0; i < list.length; i++){%>
+        <li><a href="#"><%=list[i].title%></a></li>
+        <% if(i !== list.length - 1) {%>
+        <li>|</li>
+        <%}%>
+        <% } %>
+    </ul>
+    <div class="footer-line">
+        <span><%=line.title%></span>
+    </div>
+    <div class="footer-copyright">
+        <% for(let i = 0; i < copyright1.length; i++){%>
+        <p>
+            <% for(let j = 0; j < copyright1[i].length; j++){%>
+            <a href="#"><%=copyright1[i][j].title%></a>
+            <span>|</span>
+            <%}%>
+        </p>
+        <%}%>
+    </div>
+</script>
 <script id="demo" type="text/html">
     <div class="banner">
         <img src="images/banner.jpg" alt="">
