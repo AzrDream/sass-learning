@@ -163,18 +163,26 @@ body {
   border-radius: 15px;
   overflow: hidden;
 }
-.main .main-in .item .item-top {
+.main .main-in .item .item-box {
+  width: 100%;
+  position: relative;
+  left: 0;
+  top: 0;
+  transition: top 0.3s linear 0s;
+}
+.main .main-in .item .item-box .item-top {
   position: relative;
 }
-.main .main-in .item .item-top > img {
+.main .main-in .item .item-box .item-top > img {
   width: 100%;
 }
-.main .main-in .item .item-top .play {
+.main .main-in .item .item-box .item-top .play {
   position: absolute;
   left: 10px;
   top: 10px;
+  z-index: 666;
 }
-.main .main-in .item .item-top .title {
+.main .main-in .item .item-box .item-top .title {
   position: absolute;
   left: 0;
   bottom: 0;
@@ -184,33 +192,34 @@ body {
   line-height: 40px;
   color: #fff;
 }
-.main .main-in .item .item-top .title img {
+.main .main-in .item .item-box .item-top .title img {
   margin-right: 5px;
   vertical-align: text-bottom;
 }
-.main .main-in .item .item-top .mask {
+.main .main-in .item .item-box .item-top .mask {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
   position: absolute;
   left: 0;
   top: 0;
+  display: none;
 }
-.main .main-in .item .item-top .mask ul {
+.main .main-in .item .item-box .item-top .mask ul {
   position: absolute;
   top: 10px;
   right: 10px;
 }
-.main .main-in .item .item-top .mask ul li {
+.main .main-in .item .item-box .item-top .mask ul li {
   width: 42px;
   height: 42px;
   background: url("./../images/icons.png") no-repeat;
 }
-.main .main-in .item .item-top .mask ul li:nth-child(1) {
+.main .main-in .item .item-box .item-top .mask ul li:nth-child(1) {
   background-position: -5px -5px;
   margin-bottom: 10px;
 }
-.main .main-in .item .item-top .mask ul li:nth-child(1) span {
+.main .main-in .item .item-box .item-top .mask ul li:nth-child(1) span {
   height: 16px;
   line-height: 16px;
   padding: 0 4px;
@@ -221,34 +230,49 @@ body {
   right: -4px;
   color: #fff;
 }
-.main .main-in .item .item-top .mask ul li:nth-child(2) {
+.main .main-in .item .item-box .item-top .mask ul li:nth-child(2) {
   background-position: -5px -57px;
 }
-.main .main-in .item .item-top .mask .mask-info {
+.main .main-in .item .item-box .item-top .mask .mask-info {
   color: #fff;
   position: absolute;
   left: 0;
   bottom: 0;
   padding: 10px;
 }
-.main .main-in .item .item-top .mask .mask-info .mask-title {
+.main .main-in .item .item-box .item-top .mask .mask-info .mask-title {
   height: 40px;
   line-height: 40px;
   border-bottom: 1px solid #fff;
 }
-.main .main-in .item .item-top .mask .mask-info .mask-title img {
+.main .main-in .item .item-box .item-top .mask .mask-info .mask-title img {
   vertical-align: text-bottom;
 }
-.main .main-in .item .item-bottom {
+.main .main-in .item .item-box .item-bottom {
   padding: 10px;
 }
-.main .main-in .item .item-bottom a {
+.main .main-in .item .item-box .item-bottom a {
   color: #333;
   background: #ccc;
   padding: 2px;
   border-radius: 3px;
 }
-.main .main-in .item .item-bottom a img {
+.main .main-in .item .item-box .item-bottom a img {
   width: 14px;
   vertical-align: text-bottom;
+}
+.main .main-in .item:hover .item-box {
+  top: -5px;
+}
+.main .main-in .item:hover .item-box .item-top .title {
+  display: none;
+}
+.main .main-in .item:hover .item-box .item-top .mask {
+  display: block;
+}
+.main .main-in .item:hover .item-box .item-bottom {
+  background: #f1f1f1;
+}
+.main .main-in .item:hover .item-box .item-bottom a {
+  background: #fff;
 }
