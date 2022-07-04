@@ -140,3 +140,16 @@ body{
     }
   }
 }
+.nav2{
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: -100px;
+  transition: all 1s linear 0s;
+  background: #fff;
+  .nav-bottom{
+    .menu{
+      visibility: hidden;
+    }
+  }
+}

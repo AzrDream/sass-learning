@@ -132,3 +132,15 @@ body {
 .nav .nav-bottom .nav-in .login a img {
   vertical-align: middle;
 }
+
+.nav2 {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: -100px;
+  transition: all 1s linear 0s;
+  background: #fff;
+}
+.nav2 .nav-bottom .menu {
+  visibility: hidden;
+}
